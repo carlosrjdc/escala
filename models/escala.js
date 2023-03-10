@@ -42,6 +42,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       fornecimento: {
         type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
       },
       sequencia: {
         type: DataTypes.INTEGER,
