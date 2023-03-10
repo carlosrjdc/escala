@@ -4,9 +4,11 @@ const escala = db.Escala;
 
 class inputController {
   static testeConversao = async (req, res) => {
+    const arrDadosInput = [];
     const arquivoConvertido = await converter.converterArquivo(req.file.buffer);
-    const inputInfoEscala = await escala.bulkCreate(arquivoConvertido);
-    /*const veritens = await arquivoConvertido.map(async (item) => {
+
+    //const inputInfoEscala = await escala.bulkCreate(arquivoConvertido);
+    await arquivoConvertido.map(async (item) => {
       const verificar = await escala.count({
         where: {
           fornecimento: item.fornecimento,
@@ -15,12 +17,12 @@ class inputController {
 
       if ((verificar < 1) & (item.empresa !== "Empresa")) {
         item.dataSaidaMercadoria = String(item.dataSaidaMercadoria);
-        escala.create(item);
+        arrDadosInput.push(item);
       }
-    });*/
+    });
 
-    //const inputInfoEscala = await escala.bulkCreate(arquivoConvertido);
-    console.log(arquivoConvertido);
+    const inputInfoEscala = await escala.bulkCreate(arrDadosInput);
+
     try {
       res.status(200).json(arquivoConvertido);
     } catch (erro) {
