@@ -4,27 +4,15 @@ const escala = db.Escala;
 
 class inputController {
   static testeConversao = async (req, res) => {
-    const arrDadosInput = [];
     const arquivoConvertido = await converter.converterArquivo(req.file.buffer);
+    const arquivoFiltrado = await converter.verificarDuplicados(
+      arquivoConvertido
+    );
 
-    //const inputInfoEscala = await escala.bulkCreate(arquivoConvertido);
-    await arquivoConvertido.map(async (item) => {
-      const verificar = await escala.count({
-        where: {
-          fornecimento: item.fornecimento,
-        },
-      });
-
-      if ((verificar < 1) & (item.empresa !== "Empresa")) {
-        item.dataSaidaMercadoria = String(item.dataSaidaMercadoria);
-        arrDadosInput.push(item);
-      }
-    });
-
-    const inputInfoEscala = await escala.bulkCreate(arrDadosInput);
+    const inputInfoEscala = await escala.bulkCreate(arquivoFiltrado);
 
     try {
-      res.status(200).json(arquivoConvertido);
+      res.status(200).json(arquivoFiltrado);
     } catch (erro) {
       return res.status(500).json(erro.message);
     }
