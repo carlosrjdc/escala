@@ -1,0 +1,18 @@
+{
+  "A": "empresa",
+  "B": "idRota",
+  "C": "nTransporte",
+  "D": "localOrgTransporte",
+  "E": "textoAdicioal",
+  "F": "placa",
+  "G": "fornecimento",
+  "H": "sequencia",
+  "I": "codCliente",
+  "J": "cliente",
+  "K": "cidade",
+  "L": "bairro",
+  "M": "peso",
+  "N": "rua",
+  "P": "perfil",
+  "S": "dataSaidaMercadoria"
+}
