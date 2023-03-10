@@ -16,8 +16,8 @@ const funcoes = {
   },
   verificarDuplicados: async (arquivoConvertido) => {
     const arrDadosInput = [];
-    await arquivoConvertido.map(async (item) => {
-      const verificar = await escala.count({
+    await arquivoConvertido.map((item) => {
+      const verificar = escala.count({
         where: {
           fornecimento: item.fornecimento,
         },
