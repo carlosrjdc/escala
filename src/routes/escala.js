@@ -13,6 +13,6 @@ router.post(
   upload.single("arquivo"),
   inputController.testeConversao
 );
-router.get("/quantidade", inputController.quantidade);
+router.get("/quantidade/:id", inputController.quantidade);
 
 module.exports = router;
