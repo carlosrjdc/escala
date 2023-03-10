@@ -23,7 +23,7 @@ const funcoes = {
         },
       });
 
-      if ((verificar < 1) & (item.empresa !== "Empresa")) {
+      if (verificar < 1) {
         item.dataSaidaMercadoria = String(item.dataSaidaMercadoria);
         arrDadosInput.push(item);
       }
