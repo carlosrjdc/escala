@@ -23,6 +23,15 @@ class inputController {
       return res.status(500).json(erro.message);
     }
   };
+
+  static cadastro = async (req, res) => {
+    const cadastrarinfo = await escala.create(req.body);
+    try {
+      res.status(200).json(cadastrarinfo);
+    } catch (erro) {
+      return res.status(500).json(erro.message);
+    }
+  };
 }
 
 module.exports = inputController;
