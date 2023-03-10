@@ -25,7 +25,7 @@ class inputController {
   };
 
   static cadastro = async (req, res) => {
-    const cadastrarinfo = await escala.create(req.body);
+    const cadastrarinfo = await escala.bulkCreate(req.body);
     try {
       res.status(200).json(cadastrarinfo);
     } catch (erro) {
