@@ -13,6 +13,6 @@ router.post(
   upload.single("arquivo"),
   inputController.testeConversao
 );
-router.get("/upload", (req, res) => res.json("opa"));
+router.get("/quantidade", inputController.quantidade);
 
 module.exports = router;

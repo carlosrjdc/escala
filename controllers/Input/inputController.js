@@ -11,6 +11,18 @@ class inputController {
       return res.status(500).json(erro.message);
     }
   };
+  static quantidade = async (req, res) => {
+    const verquantidade = await escala.count({
+      where: {
+        fornecimento: req.params.id,
+      },
+    });
+    try {
+      res.status(200).json(verquantidade);
+    } catch (erro) {
+      return res.status(500).json(erro.message);
+    }
+  };
 }
 
 module.exports = inputController;
