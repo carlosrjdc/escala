@@ -9,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Placas.hasMany(models.EscalaAgrupada, {
+      Placa.hasMany(models.EscalaAgrupada, {
         foreignKey: "placaId",
       });
-      Placas.hasMany(models.Disponibilidade, {
+      Placa.hasMany(models.Disponibilidade, {
         foreignKey: "placaId",
       });
     }
   }
-  Placas.init(
+  Placa.init(
     {
       id: {
         allowNull: false,
