@@ -8,6 +8,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      EscalaAgrupada.hasMany(models.Produtividade, {
+        foreignKey: "rotaId",
+      });
+      EscalaAgrupada.hasMany(models.Placa, {
+        foreignKey: "placaId",
+      });
+
       // define association here
     }
   }
@@ -19,8 +26,15 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
+      data: {
+        type: DataTypes.STRING,
+      },
       nRota: {
         type: DataTypes.STRING,
+      },
+      placaId: {
+        type: DataTypes.INTEGER,
+        references: { model: "Placas", key: "id" },
       },
       placa: {
         type: DataTypes.STRING,

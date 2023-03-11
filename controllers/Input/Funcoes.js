@@ -1,6 +1,7 @@
 const excelToJson = require("convert-excel-to-json");
 const infoDados = require("./dados.json");
 const db = require("../../models");
+const moment = require("moment-timezone");
 
 const escala = db.Escala;
 
@@ -21,6 +22,9 @@ const funcoes = {
       if (!acc[key]) {
         acc[key] = [];
         acc[key].push({
+          data: moment(new Date(obj["dataSaidaMercadoria"])).format(
+            "DD-MM-YYYY"
+          ),
           nRota: obj["idRota"],
           placa: "",
           dt: String(obj["nTransporte"]),

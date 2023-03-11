@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Produtividade.belongsTo(models.Escala, {
+      Produtividade.belongsTo(models.EscalaAgrupada, {
         as: "rota",
         foreignKey: "rotaId",
       });
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       rotaId: {
         type: DataTypes.INTEGER,
-        references: { model: "Escalas", key: "id" },
+        references: { model: "EscalaAgrupadas", key: "id" },
       },
       separadorId: {
         type: DataTypes.INTEGER,
