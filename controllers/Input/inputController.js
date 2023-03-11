@@ -9,6 +9,7 @@ class inputController {
     console.log(arquivoConvertido.shift());
     let escalanova = converter.agruparPor(arquivoConvertido, "idRota");
     const inputDados = await escalaAgrupada.bulkCreate(escalanova);
+    const inputDadosGeral = await escala.bulkCreate(arquivoConvertido);
     try {
       console.log(escalanova);
       res.status(200).json(arquivoConvertido);
