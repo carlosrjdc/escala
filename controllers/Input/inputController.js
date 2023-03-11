@@ -1,13 +1,16 @@
 const converter = require("./Funcoes.js");
 const db = require("../../models");
 const escala = db.Escala;
+const escalaAgrupada = db.EscalaAgrupada;
 
 class inputController {
   static testeConversao = async (req, res) => {
     const arquivoConvertido = await converter.converterArquivo(req.file.buffer);
     console.log(arquivoConvertido.shift());
-    const inputDados = await escala.bulkCreate(arquivoConvertido);
+    let escalanova = converter.agruparPor(arquivoConvertido, "idRota");
+    const inputDados = await escalaAgrupada.bulkCreate(escalanova);
     try {
+      console.log(escalanova);
       res.status(200).json(arquivoConvertido);
     } catch (erro) {
       return res.status(500).json(erro.message);
