@@ -22,8 +22,8 @@ const funcoes = {
       if (!acc[key]) {
         acc[key] = [];
         acc[key].push({
-          data: moment(new Date(obj["dataSaidaMercadoria"])).format(
-            "DD-MM-YYYY"
+          data: String(
+            moment(new Date(obj["dataSaidaMercadoria"])).format("DD-MM-YYYY")
           ),
           nRota: obj["idRota"],
           placa: "",
